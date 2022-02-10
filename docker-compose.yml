@@ -1,0 +1,107 @@
+version: "3"
+
+services:
+  
+  teslamate1:
+    image: teslamate/teslamate:latest
+    restart: always
+    environment:
+      - DATABASE_USER=teslamate
+      - DATABASE_PASS=secret
+      - DATABASE_NAME=teslamate
+      - DATABASE_HOST=database1
+      - MQTT_HOST=mosquitto
+      - MQTT_NAMESPACE=teslamate1
+    ports:
+      - 4001:4000
+    volumes:
+      - ./import:/opt/app/import
+    cap_drop:
+      - all
+
+  teslamate2:
+    image: teslamate/teslamate:latest
+    restart: always
+    environment:
+      - DATABASE_USER=teslamate
+      - DATABASE_PASS=secret
+      - DATABASE_NAME=teslamate
+      - DATABASE_HOST=database2
+      - MQTT_HOST=mosquitto
+      - MQTT_NAMESPACE=teslamate2
+    ports:
+      - 4002:4000
+    volumes:
+      - ./import:/opt/app/import
+    cap_drop:
+      - all
+
+  database1:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=teslamate
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=teslamate
+    volumes:
+      - teslamate-db1:/var/lib/postgresql/data
+
+  database2:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=teslamate
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=teslamate
+    volumes:
+      - teslamate-db2:/var/lib/postgresql/data
+
+
+
+  grafana1:
+    image: teslamate/grafana:latest
+    restart: always
+    environment:
+      - DATABASE_USER=teslamate
+      - DATABASE_PASS=secret
+      - DATABASE_NAME=teslamate
+      - DATABASE_HOST=database1
+    ports:
+      - 3001:3000
+    volumes:
+      - teslamate-grafana-data1:/var/lib/grafana
+
+  grafana2:
+    image: teslamate/grafana:latest
+    restart: always
+    environment:
+      - DATABASE_USER=teslamate
+      - DATABASE_PASS=secret
+      - DATABASE_NAME=teslamate
+      - DATABASE_HOST=database2
+    ports:
+      - 3002:3000
+    volumes:
+      - teslamate-grafana-data2:/var/lib/grafana
+
+
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: always
+    command: mosquitto -c /mosquitto-no-auth.conf
+    ports:
+      - 1883:1883
+    volumes:
+      - mosquitto-conf:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+
+
+
+volumes:
+  teslamate-db1:
+  teslamate-db2:
+  teslamate-grafana-data1:
+  teslamate-grafana-data2:
+  mosquitto-conf:
+  mosquitto-data:
