@@ -9,9 +9,9 @@ Just use `docker-compose up -d` from `docker-compose.yml` if you start scratch.
 If you need to migrate from 1 instance setup to 2 accounts, try the following:
 
 # 1. Export and backup the existed instance
-
+```
 docker-compose exec -T database pg_dump -U teslamate teslamate > teslamate.bck
-
+```
 ### Check the running instance:
 ```
 docker ps
