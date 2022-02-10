@@ -2,11 +2,11 @@
 
 ![Test Image 1](dashboard.png)
 
-Quick and Dirty Version for two multiple instance of teslamate on same docker host.
+Quick and Dirty Version for two accounts / instances of teslamate on same docker host.
 
-Just use `docker-compose up -d` from `docker-compose.yml` if you start brand new
+Just use `docker-compose up -d` from `docker-compose.yml` if you start scratch.
 
-If you need to migrate from 1 instance to 2, try the following:
+If you need to migrate from 1 instance setup to 2 accounts, try the following:
 
 # 1. Export and backup the existed instance
 
