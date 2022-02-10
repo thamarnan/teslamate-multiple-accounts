@@ -27,6 +27,8 @@ docker rm -f 4d5aad5c42ed f753edb95a3c 913e1d26353f 528e136aed22
 ```
 ### Create new docker-compose.yml from this repo
 
+[docker-compose.yml](docker-compose.yml)
+
 ### docker up
 ```
 docker-compose up -d
