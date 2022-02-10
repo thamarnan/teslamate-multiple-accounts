@@ -33,7 +33,7 @@ docker rm -f 4d5aad5c42ed f753edb95a3c 913e1d26353f 528e136aed22
 ```
 docker-compose up -d
 ```
-### Retore using official instruction
+### Restore saved db -- using official instruction
 https://docs.teslamate.org/docs/maintenance/backup_restore
 ```
 Replace `database` with `database1`
