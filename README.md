@@ -37,6 +37,11 @@ docker-compose up -d
 https://docs.teslamate.org/docs/maintenance/backup_restore
 ```
 Replace `database` with `database1`
+
+//Restore
+docker-compose exec -T database1 psql -U teslamate -d teslamate < teslamate.bck
+docker-compose start teslamate
+
 ```
 # Done!
 [localhost:4001](http://localhost:4001) - grafana account1
