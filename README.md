@@ -2,6 +2,9 @@
 
 ![Test Image 1](dashboard.png)
 
+
+Note: New Version already supported for multiple car in the same accounts. This approach only useful for different token
+
 Quick and Dirty Version for two accounts / instances of teslamate on same docker host.
 
 Just use `docker-compose up -d` from `docker-compose.yml` if you start scratch.
