@@ -1,4 +1,4 @@
-# Multiple Account TeslaMate
+# TeslaMate Multiple Account / Multiple Car
 
 ![Test Image 1](dashboard.png)
 
